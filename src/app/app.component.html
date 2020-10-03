@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+    <h2>Drag the box anywhere inside the grid</h2><br><br>
+    <div class="maindiv">
+      <div class="row" *ngFor="let x of gridArray">
+      <div class="col cell" [id]="x+','+y.toString()" 
+      [class.highlight-horizontal]="highlight && x<=position[0] && y==position[1]" 
+      [class.highlight-vertical]="highlight && x==position[0] && y<=position[1]" 
+      *ngFor="let y of gridArray" 
+      (dragover)="onDragOver($event)" (drop)="onDrop([x,y])">
+          <p class="box" *ngIf="curr[0]==x && curr[1]==y" draggable="true">
+            {{x}},{{y}}
+          </p>
+        </div>
+      </div>
+    </div>
+</html>
